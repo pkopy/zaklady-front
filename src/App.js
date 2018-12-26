@@ -14,7 +14,6 @@ const test = require('./helpers')
 
 class App extends Component {
   state = {
-    login : false,
     competition : {},
     competitions : [],
     token : {}
@@ -37,7 +36,7 @@ class App extends Component {
   
   render() {
     // console.log(test.test)
-    const {login, competitions} = this.state
+    const {competitions} = this.state
     return (
       <div>
         <Loader />

@@ -25,6 +25,15 @@ class Info extends Component {
         {this.state.userData.name} <br/>
         {/* {this.state.userData.bets} <br/> */}
         {this.state.userData.email} <br/>
+        <br/>
+        {this.state.userData.bets && this.state.userData.bets.length > 0 &&
+          <ol>
+          Your bets:
+            {this.state.userData.bets.map(element => 
+              <li key={element.id}>{element.bet}</li>
+            )}
+          </ol>
+        }
       </div>
     )
   };
