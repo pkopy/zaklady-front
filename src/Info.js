@@ -5,7 +5,17 @@ class Info extends Component {
     userData : {}
   }
   componentDidMount() {
-    this.getInfo()
+    // this.getInfo()
+    const token = this.props.token
+    fetch('http://localhost:3001/user',{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'email' : token.email,
+        'token' : token.id
+      },
+    }).then(data => data.json()).then(userData => this.setState({userData}, console.log(userData)))
+    .catch(err => console.log(err))
   }
   getInfo = () => {
     const token = this.props.token
@@ -22,17 +32,17 @@ class Info extends Component {
   render () {
     return (
       <div>
-        {this.state.userData.name} <br/>
-        {/* {this.state.userData.bets} <br/> */}
-        {this.state.userData.email} <br/>
-        <br/>
-        {this.state.userData.bets && this.state.userData.bets.length > 0 &&
+        
+        {this.state.userData.bets && this.state.userData.bets.length > 0 ?
           <ol>
+          {this.state.userData.name} <br/>
+          {this.state.userData.email} <br/>
           Your bets:
             {this.state.userData.bets.map(element => 
               <li key={element.id}>{element.bet}</li>
             )}
-          </ol>
+          </ol> :
+          <div>You must login first</div>
         }
       </div>
     )
