@@ -1,25 +1,70 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import Competitions from './Competitions';
+import Loader from './Loader';
+import Login from './Login';
+import Info from './Info';
+import './Header.css';
+import './Competitions.css';
+import './Loader.css';
+const test = require('./helpers')
 
 class App extends Component {
+  state = {
+    login : false,
+    competition : {},
+    competitions : [],
+    token : {}
+  };
+
+  componentDidMount() {
+    const loader = document.querySelector('.container_loader')
+    fetch('http://localhost:3001/competition')
+    .then(data => data.json())
+    .then(data => {
+      this.setState({competitions : data});
+      loader.style.display = 'none';
+    })  
+  };
+
+  setToken = (token) => {
+    this.setState({token})
+  };
+
+  
   render() {
+    // console.log(test.test)
+    const {login, competitions} = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Loader />
+        <Header
+        login={this.state.token.id}
+        />
+        <Route path="/login" render={() => (
+          <Login 
+          setToken={this.setToken}
+          />
+        )}/>
+
+        <Route path="/info" render={() => (
+          <Info 
+          token={this.state.token}
+          />
+        )}/>
+
+
+        <Route exact path="/" render={() => (
+          <Competitions 
+            competitions={competitions}
+          />
+        )}/>
+
+        <Footer/>
+
       </div>
     );
   }

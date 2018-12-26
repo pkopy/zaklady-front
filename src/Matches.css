@@ -1,0 +1,7 @@
+.match {
+  list-style-type: none;
+  border: 1px solid gray
+}
+.match.open {
+  display: block;
+}
