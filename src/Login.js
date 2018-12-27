@@ -20,7 +20,7 @@ class Login extends Component {
       this.props.setToken(data);
       this.props.test();
     })
-    .catch(err => console.log(err))
+    .catch(data => console.log(data))
   };
   render () {
     return (
