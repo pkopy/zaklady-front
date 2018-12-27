@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+const test = require('./helpers')
 
 class Info extends Component {
   state = {
@@ -7,7 +8,7 @@ class Info extends Component {
   componentDidMount() {
     // this.getInfo()
     const token = this.props.token
-    fetch('http://localhost:3001/user',{
+    fetch(`${test.ip}/user`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -15,11 +16,11 @@ class Info extends Component {
         'token' : token.id
       },
     }).then(data => data.json()).then(userData => this.setState({userData}, console.log(userData)))
-    .catch(err => console.log(err))
+    .catch(data => console.log(data))
   }
   getInfo = () => {
     const token = this.props.token
-    fetch('http://localhost:3001/user',{
+    fetch('http://46.41.150.120:5101/user',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -33,11 +34,12 @@ class Info extends Component {
     return (
       <div>
         
-        {this.state.userData.bets && this.state.userData.bets.length > 0 ?
+        {this.state.userData.name ?
           <ol>
           {this.state.userData.name} <br/>
           {this.state.userData.email} <br/>
           Your bets:
+          
             {this.state.userData.bets.map(element => 
               <li key={element.id}>{element.bet}</li>
             )}

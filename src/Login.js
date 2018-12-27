@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
+const test = require('./helpers')
 
 class Login extends Component {
   loginUser = (e) => {
     e.preventDefault();
     const values = serializeForm(e.target, {hash: true});
-    console.log(values)
+    console.log(test.ip)
 
-    fetch('http://localhost:3001/login',{
+    fetch(`${test.ip}/login`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -16,8 +17,8 @@ class Login extends Component {
     })
     .then(data => data.json())
     .then(data => {
-      console.log(data)
-      console.log(this.props.setToken(data))
+      this.props.setToken(data);
+      this.props.test();
     })
     .catch(err => console.log(err))
   };

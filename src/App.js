@@ -21,10 +21,13 @@ class App extends Component {
 
   componentDidMount() {
     const loader = document.querySelector('.container_loader')
-    fetch('http://localhost:3001/competition')
+    fetch(`${test.ip}/competition`)
     .then(data => data.json())
     .then(data => {
       this.setState({competitions : data});
+      loader.style.display = 'none';
+    })
+    .catch(err => {
       loader.style.display = 'none';
     })  
   };
@@ -43,9 +46,10 @@ class App extends Component {
         <Header
         login={this.state.token.id}
         />
-        <Route path="/login" render={() => (
+        <Route path="/login" render={({history}) => (
           <Login 
           setToken={this.setToken}
+          test={() => history.push('/info')}
           />
         )}/>
 

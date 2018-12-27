@@ -3,6 +3,7 @@ import Matches from './Matches';
 import './Matches.css';
 import Loader from './Loader';
 import './Loader.css';
+const test = require('./helpers')
 
 
 class Competitions extends Component {
@@ -17,7 +18,7 @@ class Competitions extends Component {
     const loader = document.querySelector('.container_loader');
     loader.style.display = '';
     if (id !== this.state.idComp) {
-      fetch(`http://localhost:3001/test/${id}`)
+      fetch(`${test.ip}/test/${id}`)
       .then(data => data.json())
       .then(data => {
         // console.log(data)
