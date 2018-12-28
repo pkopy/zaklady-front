@@ -10,6 +10,7 @@ import Info from './Info';
 import './Header.css';
 import './Competitions.css';
 import './Loader.css';
+import './Login.css';
 const test = require('./helpers')
 
 class App extends Component {
