@@ -16,9 +16,10 @@ class App extends Component {
   state = {
     competition : {},
     competitions : [],
-    token : {}
+    token : {},
+    userData : {}
   };
-
+  
   componentDidMount() {
     const loader = document.querySelector('.container_loader')
     fetch(`${test.ip}/competition`)
@@ -30,16 +31,39 @@ class App extends Component {
     .catch(err => {
       loader.style.display = 'none';
     })  
+    
+    
   };
 
+  
+
+  
+
   setToken = (token) => {
-    this.setState({token})
+    
+    this.setState({token});
+    const tokenInfo = this.state.token
+    fetch(`${test.ip}/user`,{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'email' : tokenInfo.email,
+        'token' : tokenInfo.id
+      },
+    }).then(data => data.json()).then(userData => this.setState({userData}, console.log(userData)))
+    .catch(data => console.log(data))
+  
   };
+  setUserData = (userData) => {
+    this.setState({userData})
+  };
+
+  
 
   
   render() {
     // console.log(test.test)
-    const {competitions} = this.state
+    const {competitions, token} = this.state
     return (
       <div>
         <Loader />
@@ -49,12 +73,15 @@ class App extends Component {
         <Route path="/login" render={({history}) => (
           <Login 
           setToken={this.setToken}
+          token={token}
           test={() => history.push('/info')}
           />
         )}/>
 
         <Route path="/info" render={() => (
           <Info 
+          userData={this.state.userData}
+          setUserData={this.setUserData}
           token={this.state.token}
           />
         )}/>
