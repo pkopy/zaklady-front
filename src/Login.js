@@ -24,8 +24,12 @@ class Login extends Component {
         console.log(data)
         if(data.id) {
           this.props.setToken(data);
-          this.props.test()
         }
+        return data
+      })
+      .then((data) => {
+        
+        this.props.test()
       })
       .catch(data => console.log(data))
 

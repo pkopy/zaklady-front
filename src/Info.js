@@ -60,7 +60,7 @@ class Info extends Component {
           Your bets:
           
             {userData.bets.map(element => 
-              <li key={element.id}>{element.bet}</li>
+              <li key={element.id}>{element.match[0].team_a} : {element.match[0].team_b}</li>
             )}
           </ol> :
           <div>You must login first</div>

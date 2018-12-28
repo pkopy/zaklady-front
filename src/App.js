@@ -51,7 +51,7 @@ class App extends Component {
         'email' : tokenInfo.email,
         'token' : tokenInfo.id
       },
-    }).then(data => data.json()).then(userData => this.setState({userData}, console.log(userData)))
+    }).then(data => data.json()).then(userData => {this.setState({userData}); console.log(userData)})
     .catch(data => console.log(data))
   
   };
