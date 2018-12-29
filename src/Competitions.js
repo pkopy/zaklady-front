@@ -59,22 +59,28 @@ class Competitions extends Component {
   render () {
     const {competitions} = this.props;
     return (
-      <div className="competitions">
-        
-        <ol>
-          {competitions.map(competition => 
-            <li key={competition.id} className="competition" onClick={() => this.showCompetition(competition.id)}>
-              <div  >{competition.name}</div>
-            </li>
-          )}
-        </ol>
-        <Matches 
-        matches={this.state.matches}
-        match={this.state.match}
-        idMatch={this.state.idMatch}
-        showDetails={(e, match)=>this.showDetails(e, match)}
-        // idComp={this.state.idComp}
-        />
+      <div>
+        <div className="competitions">
+          
+          <ol>
+            {competitions.map(competition => 
+              <li key={competition.id} className="competition" onClick={() => this.showCompetition(competition.id)}>
+                <div  >{competition.name}</div>
+              </li>
+            )}
+          </ol>
+        </div>
+          <div className="matches">
+            <Matches 
+            matches={this.state.matches}
+            match={this.state.match}
+            idMatch={this.state.idMatch}
+            showDetails={(e, match)=>this.showDetails(e, match)}
+            // idComp={this.state.idComp}
+            />
+
+          </div>
+
       </div>
     )
   }
