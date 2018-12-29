@@ -45,6 +45,13 @@
   display: none;
 }
 
+.phantom {
+  display: block;
+  padding: 20px;
+  height: 60px;
+  width: 100%
+}
+
 .Footer {
   height: 50px;
   padding-left: 10px;
@@ -53,8 +60,13 @@
   bottom: 0;
   box-shadow: 0 0 2px 0 #ddd;
   background-color: #d8d8d8;
+} 
+@media screen and (max-height: 600px) {
+  /* .Footer {
+    position: relative;
+    bottom: -10px
+  } */
 }
-
 @media screen and (max-width: 565px){
   .nav{
     z-index: 10;

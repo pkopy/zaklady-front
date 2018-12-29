@@ -11,6 +11,7 @@ import './Header.css';
 import './Competitions.css';
 import './Loader.css';
 import './Login.css';
+
 const test = require('./helpers')
 
 class App extends Component {
@@ -32,7 +33,16 @@ class App extends Component {
     .catch(err => {
       loader.style.display = 'none';
     })   
+
+    // document.querySelectorAll('.Footer')[0].addEventListener('click', (e) => {
+    //   console.log(window)
+    //     console.log(e.target.offsetParent.clientHeight)
+    //     e.target.style.top =  e.target.offsetParent.clientHeight + 50 + 'px'
+    //   })
+    
   };
+
+  
 
   setToken = (token) => {
     console.log(`token: ${token.email}, ${token.id}`)
@@ -50,6 +60,7 @@ class App extends Component {
     .then(userData => {
       console.log(userData)
       this.setState({userData}); 
+      
     })
     .catch(data => console.log(data))
   
@@ -71,13 +82,14 @@ class App extends Component {
         <Header
         login={this.state.token.id}
         />
+        
         <Route path="/login" render={({history}) => (
           <Login 
           setToken={this.setToken}
           token={token}
           test={() => history.push('/info')}
           />
-        )}/>
+          )}/>
 
         <Route path="/info" render={() => (
           <Info 
@@ -85,17 +97,19 @@ class App extends Component {
           setUserData={this.setUserData}
           token={this.state.token}
           />
-        )}/>
+          )}/>
 
 
         <Route exact path="/" render={() => (
           <Competitions 
-            competitions={competitions}
+          competitions={competitions}
+          render={this.render}
           />
-        )}/>
+          )}/>
 
-        <Footer/>
-
+        {/* <Footer/> */}
+        {/* <Footer/> */}
+        {/* <footer></footer> */}
       </div>
     );
   }
