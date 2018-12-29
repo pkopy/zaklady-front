@@ -17,6 +17,7 @@
   text-align: center;
   text-transform: uppercase;
   border: 1px solid #c4c4c4;
+  border-radius: 10px;
   margin: 5px;
   cursor: pointer;
   transition-duration: .4s;
@@ -25,7 +26,8 @@
 
 .competition img {
   width: 8em;
-  margin: .4em 0
+  margin: .4em 0;
+  max-height: 8em;
 }
 
 .competition:hover {
@@ -43,4 +45,19 @@
   display: inline-block;
   padding: 0;
   width: 60%
+}
+
+@media screen and (max-width: 565px){
+  .competition img {
+    display: none;
+  }
+
+  .competition {
+    min-height: auto;
+  }
+
+  .competitions ol {
+    display: inline-block;
+    
+  }
 }
