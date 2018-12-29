@@ -22,7 +22,6 @@ class Matches extends Component {
       <div>
         <ol>
           {matches.map(match => 
-            
             <li key={match.id} className="match">
               <div onClick={(e) => showDetails(e, match)}>{match.team_a} : {match.team_b}</div>
             </li>

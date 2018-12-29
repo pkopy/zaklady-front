@@ -31,17 +31,11 @@ class App extends Component {
     })
     .catch(err => {
       loader.style.display = 'none';
-    })  
-    
-    
+    })   
   };
 
-  
-
-  
-
   setToken = (token) => {
-    
+    console.log(`token: ${token.email}, ${token.id}`)
     this.setState({token});
     const tokenInfo = this.state.token
     fetch(`${test.ip}/user`,{
@@ -51,10 +45,16 @@ class App extends Component {
         'email' : tokenInfo.email,
         'token' : tokenInfo.id
       },
-    }).then(data => data.json()).then(userData => {this.setState({userData}); console.log(userData)})
+    })
+    .then(data => data.json())
+    .then(userData => {
+      console.log(userData)
+      this.setState({userData}); 
+    })
     .catch(data => console.log(data))
   
   };
+
   setUserData = (userData) => {
     this.setState({userData})
   };

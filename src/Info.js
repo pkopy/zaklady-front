@@ -48,6 +48,7 @@ class Info extends Component {
       return false
     }
   };
+  
   render () {
     const {userData, token} = this.props
     return (

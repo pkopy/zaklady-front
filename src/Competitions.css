@@ -19,10 +19,18 @@
   border: 1px solid #c4c4c4;
   margin: 5px;
   cursor: pointer;
+  transition-duration: .4s;
+  min-height: 10em;
+}
+
+.competition img {
+  width: 8em;
+  margin: .4em 0
 }
 
 .competition:hover {
-  background-color: #e2e2e2
+  background-color: #e2e2e2;
+  box-shadow: 0 0 10px 2px #cecece;
 }
 
 .matches {

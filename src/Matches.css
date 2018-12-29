@@ -6,7 +6,7 @@
 }
 
 .match:nth-child(odd) {
-  background-color: rgb(194, 189, 189)
+  background-color: #ddd
 }
 .match.open {
   display: block;
