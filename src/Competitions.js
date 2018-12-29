@@ -3,6 +3,7 @@ import Matches from './Matches';
 import './Matches.css';
 import Loader from './Loader';
 import './Loader.css';
+import add from './add.svg'
 const test = require('./helpers')
 
 

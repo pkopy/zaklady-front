@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Details from './Details'
+import add from './add.svg'
+import info from './information.svg'
 
 class Matches extends Component {
   state = {
@@ -23,7 +25,10 @@ class Matches extends Component {
         <ol>
           {matches.map(match => 
             <li key={match.id} className="match">
-              <div onClick={(e) => showDetails(e, match)}>{match.team_a} : {match.team_b}</div>
+              <div className="match_details">
+                <div ><p>{match.team_a} : {match.team_b}</p></div>
+                <div className="icons"><img src={add}></img><img src={info} onClick={(e) => showDetails(e, match)}></img></div>
+              </div>
             </li>
           )}
         </ol>
