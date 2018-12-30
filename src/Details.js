@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './Details.css'
 
 class Details extends Component {
   render () {
     const {match, idMatch} = this.props
     return (
-      <div>
+      <div className="details">
         {idMatch === match.id && 
         <div>
           <div>Name: {match.name}</div>

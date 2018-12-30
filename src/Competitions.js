@@ -52,10 +52,14 @@ class Competitions extends Component {
   showDetails = (e, match) => {
     console.log(match)
     e.stopPropagation();
-
+    // document.querySelector('.details').classList.toggle('open')
+    // e.target.className = 'details'
+    test.changeElementSize(document.querySelector('.details'), 600)
     this.setState({match})
     this.setState({idMatch : match.id})
   };
+
+  
 
   render () {
     const {competitions} = this.props;

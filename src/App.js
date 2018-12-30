@@ -11,6 +11,7 @@ import './Header.css';
 import './Competitions.css';
 import './Loader.css';
 import './Login.css';
+import './Details.css'
 
 const test = require('./helpers')
 

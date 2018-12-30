@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Details from './Details'
 import add from './add.svg'
 import info from './information.svg'
+import './Details.css'
 
 class Matches extends Component {
   state = {
