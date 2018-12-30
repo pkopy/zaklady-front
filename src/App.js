@@ -78,22 +78,28 @@ class App extends Component {
     console.log(match)
     e.stopPropagation();
     const details = document.querySelector('.details');
-    const containerDetails = document.querySelector('.container_details')
-
+    const containerDetails = document.querySelector('.container_details');
+    // console.log(closeButton)
+    this.setState({match})
+    this.setState({idMatch : match.id})
     // document.querySelector('.details').classList.toggle('open')
     // e.target.className = 'details'
     containerDetails.style.display = 'block';
     test.changeElementSize(details, 600)
-    this.setState({match})
-    this.setState({idMatch : match.id})
+    .then(() => {
+      const closeButton = document.querySelector('.close_button')
+      closeButton.style.display = 'block'
+    })
   };
 
   hideDetails = () => {
     const details = document.querySelector('.details');
     const containerDetails = document.querySelector('.container_details')
+    
     details.style = '';
     // details.style.height = 0;
     containerDetails.style.display = 'none';
+    this.setState({idMatch : 0})
   }
 
   
@@ -103,13 +109,14 @@ class App extends Component {
     return (
       <div>
         <Loader />
+        <Header
+        login={this.state.token.id}
+        idMatch={idMatch}
+        />
         <Details 
         match={match}
         idMatch={idMatch}
         hideDetails={this.hideDetails}
-        />
-        <Header
-        login={this.state.token.id}
         />
         
         <Route path="/login" render={({history}) => (

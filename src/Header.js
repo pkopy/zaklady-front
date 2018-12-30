@@ -8,7 +8,7 @@ class Header extends Component {
   }
   render () {
 
-    const {login} = this.props
+    const {login, idMatch} = this.props
     return (
       
       <header className="Header">
@@ -18,14 +18,17 @@ class Header extends Component {
         </svg>
       </div>
         {/* <img src={logo} className="Header-logo" alt="logo" /> */}
-        <div className="nav">
-          <ul className="nav_list">
-            <li className="nav_item"><Link to="/" className="nav_link">Home</Link></li>
-            <li className="nav_item"><Link to="/info" className="nav_link">Info</Link></li>
-            <li className="nav_item"><Link to="/x" className="nav_link">Contact</Link></li>
-            <li className="nav_item">{login?(<Link to="/logout" className="nav_link">Logout</Link>):(<Link to="/login" className="nav_link">Login</Link>)}</li>
-          </ul>
-        </div>
+        {idMatch === 0 &&
+          <div className="nav">
+            <ul className="nav_list">
+              <li className="nav_item"><Link to="/" className="nav_link">Home</Link></li>
+              <li className="nav_item"><Link to="/info" className="nav_link">Info</Link></li>
+              <li className="nav_item"><Link to="/x" className="nav_link">Contact</Link></li>
+              <li className="nav_item">{login?(<Link to="/logout" className="nav_link">Logout</Link>):(<Link to="/login" className="nav_link">Login</Link>)}</li>
+            </ul>
+          </div>
+        
+        }
       </header>
       
     );

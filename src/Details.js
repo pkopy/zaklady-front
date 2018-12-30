@@ -11,9 +11,9 @@ class Details extends Component {
           {idMatch === match.id &&
             <div>
               <div>
+                <h1>{match.team_a} : {match.team_b}</h1>
                 <div>Name: {match.name}</div>
-                <div>Team A: {match.team_a}</div>
-                <div>Team B: {match.team_b}</div>
+                
                 <div>Result: {match.result}</div>
                 <button className="close_button" onClick={hideDetails}></button>
             </div>   
