@@ -11,11 +11,11 @@ lib.changeElementSize = (elem, size) => {
       elementHeight += 2;
       elem.style.display = 'block';
       elem.style.left = window.innerWidth/2 - count/2 + 'px';
-      elem.style.top = window.innerHeight/2 - count/2 + 'px';
+      elem.style.top = window.innerHeight/2 - count/2 + window.pageYOffset +'px';
       elem.style.height = count + elementHeight + 'px'
       elem.style.width = count + 'px'
       elem.style.opacity = size/(2 * size - count)
-      if(count >= size || count >= window.innerWidth/1.2 || count >= window.innerHeight/1.4){
+      if(count >= size || count >= window.innerWidth/1.2 || count >= window.innerHeight/1.3){
           clearInterval(id);
           elem.style.opacity = 1;
           res()

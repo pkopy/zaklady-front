@@ -9,6 +9,8 @@ body, html{
   background-color: #f3f3ed;
   margin-top: 0;
   margin-bottom: 0;
+  /* scroll-behavior: smooth; */
+  min-height: 0;
 }
 
 

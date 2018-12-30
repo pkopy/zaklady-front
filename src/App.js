@@ -15,6 +15,7 @@ import './Login.css';
 import './Details.css'
 
 const test = require('./helpers')
+const body = document.querySelectorAll('body')[0];
 
 class App extends Component {
   state = {
@@ -33,9 +34,11 @@ class App extends Component {
     .then(data => {
       this.setState({competitions : data});
       loader.style.display = 'none';
+      
     })
     .catch(err => {
       loader.style.display = 'none';
+      
     })   
 
     // document.querySelectorAll('.Footer')[0].addEventListener('click', (e) => {
@@ -78,19 +81,22 @@ class App extends Component {
     console.log(match)
     e.stopPropagation();
     const details = document.querySelector('.details');
-    const body = document.querySelectorAll('body')[0];
+    
     const containerDetails = document.querySelector('.container_details');
+    document.querySelector('.container_details').style.height = window.innerHeight + window.pageYOffset + 'px' 
     // console.log(closeButton)
     this.setState({match})
     this.setState({idMatch : match.id})
     // document.querySelector('.details').classList.toggle('open')
     // e.target.className = 'details'
     containerDetails.style.display = 'block';
+    
     test.changeElementSize(details, 600)
     .then(() => {
-      
-      document.documentElement.scrollTop = 0;
       body.style.overflowY = 'hidden';
+      // document.body.scrollTop = 0;
+      // document.documentElement.scrollTop = 0;
+      body.style.scrollBehavior = '';
       const closeButton = document.querySelector('.close_button')
       closeButton.style.display = 'block'
     })
@@ -99,14 +105,14 @@ class App extends Component {
   hideDetails = () => {
     const details = document.querySelector('.details');
     const containerDetails = document.querySelector('.container_details')
-    const body = document.querySelectorAll('body')[0];
+    // const body = document.querySelectorAll('body')[0];
 
     body.style.overflowY = 'auto';
     details.style = '';
     // details.style.height = 0;
     containerDetails.style.display = 'none';
     this.setState({idMatch : 0})
-    console.log(document.body)
+    console.log(window)
   }
 
   

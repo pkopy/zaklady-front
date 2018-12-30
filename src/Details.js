@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Details.css'
 
+
 class Details extends Component {
   render () {
     const {match, idMatch, hideDetails} = this.props

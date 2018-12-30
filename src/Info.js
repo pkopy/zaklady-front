@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Matches.css'
 const test = require('./helpers')
 
 class Info extends Component {
@@ -61,7 +62,7 @@ class Info extends Component {
           Your bets:
           
             {userData.bets.map(element => 
-              <li key={element.id}>{element.match[0].team_a} : {element.match[0].team_b}</li>
+              <li key={element.id}><div className="match">{element.match[0].team_a} : {element.match[0].team_b}</div></li>
             )}
           </ol> :
           <div>You must login first</div>

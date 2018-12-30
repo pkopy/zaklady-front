@@ -5,7 +5,7 @@ import Loader from './Loader';
 import './Loader.css';
 import add from './add.svg'
 const test = require('./helpers')
-
+const body = document.querySelectorAll('body')[0];
 
 class Competitions extends Component {
   state = {
@@ -17,17 +17,19 @@ class Competitions extends Component {
 
   showCompetition = (id) => {
     const loader = document.querySelector('.container_loader');
+    const backgroundloader = document.querySelector('.background_loader');
+    backgroundloader.style.height = window.innerHeight + window.pageYOffset +'px'
     loader.style.display = '';
+    body.style.overflowY = 'hidden';
     if (id !== this.state.idComp) {
       fetch(`${test.ip}/test/${id}`)
       .then(data => data.json())
       .then(data => {
-        // console.log(data)
-        // this.setState({idComp : data.id_comp})
         this.setState({matches : data.matches});
         this.setState({idComp : id});
         this.setState({idMatch : 0});
         loader.style.display = 'none';
+        body.style.overflowY = 'auto';
         // console.log(this.state.competition.matches)
       })
       .catch(data => {
@@ -37,13 +39,14 @@ class Competitions extends Component {
         this.setState({matches : data.matches});
         this.setState({idMatch : 0});
         loader.style.display = 'none';
+        body.style.overflowY = 'auto';
       });
     } else {
       this.setState({matches : []});
       this.setState({idComp : 0});
       this.setState({idMatch : 0});
       loader.style.display = 'none';
-
+      body.style.overflowY = 'auto';
     }
 
     // document.querySelector('.match').classList.toggle('open')
