@@ -15,7 +15,7 @@ lib.changeElementSize = (elem, size) => {
       elem.style.height = count + elementHeight + 'px'
       elem.style.width = count + 'px'
       elem.style.opacity = size/(2 * size - count)
-      if(count >= size || count >= window.innerWidth/1.2){
+      if(count >= size || count >= window.innerWidth/1.2 || count >= window.innerHeight/1.4){
           clearInterval(id);
           elem.style.opacity = 1;
           res()

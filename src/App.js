@@ -78,6 +78,7 @@ class App extends Component {
     console.log(match)
     e.stopPropagation();
     const details = document.querySelector('.details');
+    const body = document.querySelectorAll('body')[0];
     const containerDetails = document.querySelector('.container_details');
     // console.log(closeButton)
     this.setState({match})
@@ -87,6 +88,9 @@ class App extends Component {
     containerDetails.style.display = 'block';
     test.changeElementSize(details, 600)
     .then(() => {
+      
+      document.documentElement.scrollTop = 0;
+      body.style.overflowY = 'hidden';
       const closeButton = document.querySelector('.close_button')
       closeButton.style.display = 'block'
     })
@@ -95,11 +99,14 @@ class App extends Component {
   hideDetails = () => {
     const details = document.querySelector('.details');
     const containerDetails = document.querySelector('.container_details')
-    
+    const body = document.querySelectorAll('body')[0];
+
+    body.style.overflowY = 'auto';
     details.style = '';
     // details.style.height = 0;
     containerDetails.style.display = 'none';
     this.setState({idMatch : 0})
+    console.log(document.body)
   }
 
   
