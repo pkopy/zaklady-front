@@ -15,7 +15,7 @@ class Details extends Component {
                 <div>Team A: {match.team_a}</div>
                 <div>Team B: {match.team_b}</div>
                 <div>Result: {match.result}</div>
-                <button onClick={hideDetails}>Close</button>
+                <button className="close_button" onClick={hideDetails}></button>
             </div>   
           </div>}
         </div>

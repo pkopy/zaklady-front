@@ -63,7 +63,7 @@ class Competitions extends Component {
             {competitions.map(competition => 
               <li key={competition.id} className="competition" onClick={() => this.showCompetition(competition.id)}>
                 <div>{competition.name}</div>
-                <div><img src={`${test.ip}/img/${competition.img}`}></img></div>
+                <div><img src={`${test.ip}/img/${competition.img}`} alt={competition.name}/></div>
               </li>
             )}
           </ol>
