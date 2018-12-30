@@ -7,6 +7,7 @@ import Competitions from './Competitions';
 import Loader from './Loader';
 import Login from './Login';
 import Info from './Info';
+import Details from './Details'
 import './Header.css';
 import './Competitions.css';
 import './Loader.css';
@@ -20,7 +21,9 @@ class App extends Component {
     competition : {},
     competitions : [],
     token : {},
-    userData : {}
+    userData : {},
+    match : {},
+    idMatch : 0
   };
   
   componentDidMount() {
@@ -71,15 +74,40 @@ class App extends Component {
     this.setState({userData})
   };
 
-  
+  showDetails = (e, match) => {
+    console.log(match)
+    e.stopPropagation();
+    const details = document.querySelector('.details');
+    const containerDetails = document.querySelector('.container_details')
+
+    // document.querySelector('.details').classList.toggle('open')
+    // e.target.className = 'details'
+    containerDetails.style.display = 'block';
+    test.changeElementSize(details, 600)
+    this.setState({match})
+    this.setState({idMatch : match.id})
+  };
+
+  hideDetails = () => {
+    const details = document.querySelector('.details');
+    const containerDetails = document.querySelector('.container_details')
+    details.style = '';
+    // details.style.height = 0;
+    containerDetails.style.display = 'none';
+  }
 
   
   render() {
     // console.log(test.test)
-    const {competitions, token} = this.state
+    const {competitions, token, match, idMatch} = this.state
     return (
       <div>
         <Loader />
+        <Details 
+        match={match}
+        idMatch={idMatch}
+        hideDetails={this.hideDetails}
+        />
         <Header
         login={this.state.token.id}
         />
@@ -104,7 +132,7 @@ class App extends Component {
         <Route exact path="/" render={() => (
           <Competitions 
           competitions={competitions}
-          render={this.render}
+          showDetails={this.showDetails}
           />
           )}/>
 

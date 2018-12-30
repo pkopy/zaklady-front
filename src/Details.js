@@ -3,19 +3,25 @@ import './Details.css'
 
 class Details extends Component {
   render () {
-    const {match, idMatch} = this.props
+    const {match, idMatch, hideDetails} = this.props
     return (
-      
-      <div className="details">
-        {idMatch === match.id && 
-        <div>
-          <div>Name: {match.name}</div>
-          <div>Team A: {match.team_a}</div>
-          <div>Team B: {match.team_b}</div>
-          <div>Result: {match.result}</div>
-        </div>}
-
+      <div className="container_details">
+        <div className="background_details"></div>
+        <div className="details">
+          {idMatch === match.id &&
+            <div>
+              <div>
+                <div>Name: {match.name}</div>
+                <div>Team A: {match.team_a}</div>
+                <div>Team B: {match.team_b}</div>
+                <div>Result: {match.result}</div>
+                <button onClick={hideDetails}>Close</button>
+            </div>   
+          </div>}
+        </div>
       </div>
+      
+      
     )
   };
 };

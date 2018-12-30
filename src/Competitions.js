@@ -11,8 +11,8 @@ class Competitions extends Component {
   state = {
     matches : [],
     idComp : 0,
-    match : {},
-    idMatch : 0
+    // match : {},
+    // idMatch : 0
   };
 
   showCompetition = (id) => {
@@ -49,20 +49,12 @@ class Competitions extends Component {
     // document.querySelector('.match').classList.toggle('open')
   };
 
-  showDetails = (e, match) => {
-    console.log(match)
-    e.stopPropagation();
-    // document.querySelector('.details').classList.toggle('open')
-    // e.target.className = 'details'
-    test.changeElementSize(document.querySelector('.details'), 600)
-    this.setState({match})
-    this.setState({idMatch : match.id})
-  };
+  
 
   
 
   render () {
-    const {competitions} = this.props;
+    const {competitions,showDetails} = this.props;
     return (
       <div>
         <div className="competitions">
@@ -81,7 +73,7 @@ class Competitions extends Component {
             matches={this.state.matches}
             match={this.state.match}
             idMatch={this.state.idMatch}
-            showDetails={(e, match)=>this.showDetails(e, match)}
+            showDetails={showDetails}
             // idComp={this.state.idComp}
             />
 

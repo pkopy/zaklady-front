@@ -33,10 +33,7 @@ class Matches extends Component {
             </li>
           )}
         </ol>
-        <Details 
-        match={match}
-        idMatch={idMatch}
-        />
+        
       </div>
     )
   };
