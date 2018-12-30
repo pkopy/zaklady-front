@@ -5,6 +5,7 @@ class Details extends Component {
   render () {
     const {match, idMatch} = this.props
     return (
+      
       <div className="details">
         {idMatch === match.id && 
         <div>
