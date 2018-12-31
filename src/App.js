@@ -8,11 +8,13 @@ import Loader from './Loader';
 import Login from './Login';
 import Info from './Info';
 import Details from './Details'
+import Bet from './Bet'
 import './Header.css';
 import './Competitions.css';
 import './Loader.css';
 import './Login.css';
 import './Details.css'
+import './Bet.css'
 
 const test = require('./helpers')
 const body = document.querySelectorAll('body')[0];
@@ -78,24 +80,16 @@ class App extends Component {
   };
 
   showDetails = (e, match) => {
-    console.log(match)
     e.stopPropagation();
-    const details = document.querySelector('.details');
-    
     const containerDetails = document.querySelector('.container_details');
-    document.querySelector('.container_details').style.height = window.innerHeight + window.pageYOffset + 'px' 
-    // console.log(closeButton)
+    const details = document.querySelector('.details');
+    containerDetails.style.height = window.innerHeight + window.pageYOffset + 'px' 
     this.setState({match})
     this.setState({idMatch : match.id})
-    // document.querySelector('.details').classList.toggle('open')
-    // e.target.className = 'details'
     containerDetails.style.display = 'block';
-    
     test.changeElementSize(details, 600)
     .then(() => {
       body.style.overflowY = 'hidden';
-      // document.body.scrollTop = 0;
-      // document.documentElement.scrollTop = 0;
       body.style.scrollBehavior = '';
       const detailsContent = document.querySelector('.details_content')
       detailsContent.style.display = 'block'
@@ -105,16 +99,40 @@ class App extends Component {
   hideDetails = () => {
     const details = document.querySelector('.details');
     const containerDetails = document.querySelector('.container_details')
-    // const body = document.querySelectorAll('body')[0];
-
     body.style.overflowY = 'auto';
     details.style = '';
-    // details.style.height = 0;
     containerDetails.style.display = 'none';
-    this.setState({idMatch : 0})
-    console.log(window)
-  }
+    this.setState({idMatch : 0});
+  };
+  hideBet = () => {
+    const details = document.querySelector('.bet');
+    const containerDetails = document.querySelector('.container_bet')
+    body.style.overflowY = 'auto';
+    details.style = '';
+    containerDetails.style.display = 'none';
+    this.setState({idMatch : 0});
+  };
 
+  showBet = (e, match) => {
+    console.log(match)
+    e.stopPropagation();
+    const containerBet = document.querySelector('.container_bet');
+    const bet = document.querySelector('.bet');
+    containerBet.style.height = window.innerHeight + window.pageYOffset + 'px' 
+    this.setState({match})
+    this.setState({idMatch : match.id})
+    containerBet.style.display = 'block';
+    
+    test.changeElementSize(bet, 400)
+    .then(() => {
+      body.style.overflowY = 'hidden';
+      // document.body.scrollTop = 0;
+      // document.documentElement.scrollTop = 0;
+      body.style.scrollBehavior = '';
+      const betContent = document.querySelector('.bet_content')
+      betContent.style.display = 'block'
+    })
+  };
   
   render() {
     // console.log(test.test)
@@ -130,6 +148,12 @@ class App extends Component {
         match={match}
         idMatch={idMatch}
         hideDetails={this.hideDetails}
+        />
+
+        <Bet
+        match={match}
+        idMatch={idMatch}
+        hideBet={this.hideBet}
         />
         
         <Route path="/login" render={({history}) => (
@@ -153,6 +177,7 @@ class App extends Component {
           <Competitions 
           competitions={competitions}
           showDetails={this.showDetails}
+          showBet={this.showBet}
           />
           )}/>
 

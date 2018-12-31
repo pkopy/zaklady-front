@@ -54,7 +54,7 @@ class Login extends Component {
           <button disabled={!this.state.passLengt} className={!this.state.passLengt ? "login-button-disabled":"login-button"}>Login</button>
         </form>
       </div>
-    )
+    );
   };
 };
 
