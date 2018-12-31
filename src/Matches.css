@@ -25,7 +25,7 @@
 .match_details p {
   margin: .2em
 }
-.match img:hover {
+.match .icon:hover {
   background-color: rgb(207, 207, 207);
   box-shadow: 0 0 10px 2px #8b8b8b;
   border-radius: 5px;
