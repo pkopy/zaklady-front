@@ -97,8 +97,8 @@ class App extends Component {
       // document.body.scrollTop = 0;
       // document.documentElement.scrollTop = 0;
       body.style.scrollBehavior = '';
-      const closeButton = document.querySelector('.close_button')
-      closeButton.style.display = 'block'
+      const detailsContent = document.querySelector('.details_content')
+      detailsContent.style.display = 'block'
     })
   };
 
