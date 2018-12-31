@@ -107,16 +107,7 @@ class App extends Component {
     this.setState({idMatch : 0});
   };
 
-  hideBet = () => {
-    const bet = document.querySelector('.bet');
-    const containerBet = document.querySelector('.container_bet');
-    const betContent = document.querySelector('.bet_content');
-    betContent.style.display = 'none';
-    body.style.overflowY = 'auto';
-    bet.style = '';
-    containerBet.style.display = 'none';
-    this.setState({idMatch : 0});
-  };
+  
 
   showBet = (e, match) => {
     console.log(match)
@@ -137,6 +128,17 @@ class App extends Component {
       const betContent = document.querySelector('.bet_content')
       betContent.style.display = 'block'
     })
+  };
+
+  hideBet = () => {
+    const bet = document.querySelector('.bet');
+    const containerBet = document.querySelector('.container_bet');
+    const betContent = document.querySelector('.bet_content');
+    betContent.style.display = 'none';
+    body.style.overflowY = 'auto';
+    bet.style = '';
+    containerBet.style.display = 'none';
+    this.setState({idMatch : 0});
   };
   
   render() {
