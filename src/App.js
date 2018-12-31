@@ -91,25 +91,30 @@ class App extends Component {
     .then(() => {
       body.style.overflowY = 'hidden';
       body.style.scrollBehavior = '';
-      const detailsContent = document.querySelector('.details_content')
+      const detailsContent = document.querySelector('.details_content');
       detailsContent.style.display = 'block'
     })
   };
 
   hideDetails = () => {
     const details = document.querySelector('.details');
-    const containerDetails = document.querySelector('.container_details')
+    const containerDetails = document.querySelector('.container_details');
+    const detailsContent = document.querySelector('.details_content');
+    detailsContent.style.display = 'none';
     body.style.overflowY = 'auto';
     details.style = '';
     containerDetails.style.display = 'none';
     this.setState({idMatch : 0});
   };
+
   hideBet = () => {
-    const details = document.querySelector('.bet');
-    const containerDetails = document.querySelector('.container_bet')
+    const bet = document.querySelector('.bet');
+    const containerBet = document.querySelector('.container_bet');
+    const betContent = document.querySelector('.bet_content');
+    betContent.style.display = 'none';
     body.style.overflowY = 'auto';
-    details.style = '';
-    containerDetails.style.display = 'none';
+    bet.style = '';
+    containerBet.style.display = 'none';
     this.setState({idMatch : 0});
   };
 

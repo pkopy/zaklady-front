@@ -5,10 +5,12 @@ class Bet extends Component {
 
   setBet = (e) => {
     document.querySelectorAll('.user_bet div').forEach(ele => {
-      ele.style.backgroundColor = ''
+      ele.style.backgroundColor = '';
+      ele.style.boxShadow = '';
     })
     
-    e.target.style.backgroundColor = 'green'
+    e.target.style.backgroundColor = '#1d9acc';
+    e.target.style.boxShadow = '-1px 1px 14px #1d9acc'
   }
   render () {
     const {hideBet, match, idMatch} = this.props;
