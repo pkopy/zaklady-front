@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Matches.css'
+import './Info.css'
 const test = require('./helpers')
 
 class Info extends Component {
@@ -54,8 +55,11 @@ class Info extends Component {
     const {userData, token} = this.props
     return (
       <div>
-        
+        {userData.accessLevel === 1 && <div>
+          <button className="admin_button">Admin Panel</button>
+        </div>}
         {userData.name && this.checkToken(token) ?
+          
           <ol>
           {userData.name} <br/>
           {userData.email} <br/>
