@@ -36,12 +36,25 @@ class Info extends Component {
     e.stopPropagation();
     let arr = [];
     const userData = this.props.userData;
+    const tokenInfo = this.props.token;
     arr = userData.bets.filter(element => {
       return element.id !== bet.id
     });
-    userData.bets = arr;
-    this.setState({userData})
-    console.log(arr)
+    fetch(`${test.ip}/bet`, {
+      method : 'DELETE',
+      headers : {
+        'Content-Type': 'application/json',
+        'token' : tokenInfo.id,
+        'email' : tokenInfo.email,
+        'idbet' : bet.id
+      },
+    })
+    .then(() => {
+      userData.bets = arr;
+      this.setState({userData})
+      console.log(arr)
+
+    })
   }
   
   
