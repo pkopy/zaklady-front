@@ -19,7 +19,7 @@ class Matches extends Component {
 
   render () {
 
-    const {matches, showDetails, showBet} = this.props;
+    const {matches, showDetails, addBet} = this.props;
 
     return (
       <div>
@@ -28,7 +28,7 @@ class Matches extends Component {
             <li key={match.id} className="match">
               <div className="match_details">
                 <div ><p>{match.team_a} : {match.team_b}</p></div>
-                <div className="icons"><img className="icon" src={add} onClick={(e) => showBet(e, match)}></img><img className="icon" src={info} onClick={(e) => showDetails(e, match)}></img></div>
+                <div className="icons"><img className="icon" src={add} onClick={(e) => addBet(e, match)}></img><img className="icon" src={info} onClick={(e) => showDetails(e, match)}></img></div>
               </div>
             </li>
           )}

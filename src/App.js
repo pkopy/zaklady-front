@@ -16,6 +16,7 @@ import './Login.css';
 import './Details.css'
 import './Bet.css'
 
+
 const test = require('./helpers')
 const body = document.querySelectorAll('body')[0];
 
@@ -68,6 +69,7 @@ class App extends Component {
     .then(data => data.json())
     .then(userData => {
       console.log(userData)
+      
       this.setState({userData}); 
       
     })
@@ -130,6 +132,39 @@ class App extends Component {
     })
   };
 
+  addBet = (e, match) => {
+    e.stopPropagation();
+    const tokenInfo = this.state.token;
+    console.log(tokenInfo)
+    const user = this.state.userData;
+    const body = {
+      'email' : tokenInfo.email,
+      'idMatch' : match.id,
+      'bet' : 1
+    }
+    console.log(user.name)
+    console.log('token ', test.checkToken(tokenInfo))
+    if(user.name && test.checkToken(tokenInfo)) {
+      
+      fetch(`${test.ip}/bet`, {
+        method : 'POST',
+        headers : {
+          'Content-Type': 'application/json',
+          'token' : tokenInfo.id
+        },
+        body: JSON.stringify(body) 
+      })
+      .then(() => {
+        this.setToken(tokenInfo)
+      })
+      
+      .catch(err => console.log(err))
+    } else {
+      console.log('xxxxx')
+    }
+    
+  };
+
   hideBet = () => {
     const bet = document.querySelector('.bet');
     const containerBet = document.querySelector('.container_bet');
@@ -185,6 +220,7 @@ class App extends Component {
           competitions={competitions}
           showDetails={this.showDetails}
           showBet={this.showBet}
+          addBet={this.addBet}
           />
           )}/>
 

@@ -57,7 +57,7 @@ class Competitions extends Component {
   
 
   render () {
-    const {competitions, showDetails, showBet} = this.props;
+    const {competitions, showDetails, addBet} = this.props;
     return (
       <div>
         <div className="competitions">
@@ -77,7 +77,7 @@ class Competitions extends Component {
             match={this.state.match}
             idMatch={this.state.idMatch}
             showDetails={showDetails}
-            showBet={showBet}
+            addBet={addBet}
             // idComp={this.state.idComp}
             />
 

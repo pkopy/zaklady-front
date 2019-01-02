@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Matches.css'
 import './Info.css'
+import minus from './minus.svg'
 const test = require('./helpers')
 
 class Info extends Component {
@@ -30,26 +31,19 @@ class Info extends Component {
   componentWillUnmount() {
     clearInterval(this.timer)
   }
-  getInfo = () => {
-    const token = this.props.token
-    fetch(`${test.ip}/user`,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'email' : token.email,
-        'token' : token.id
-      },
-    }).then(data => data.json()).then(userData => this.setState({userData}, console.log(userData)))
-    .catch(err => console.log(err))
+  
+  deleteBet = (e, bet) => {
+    e.stopPropagation();
+    let arr = [];
+    const userData = this.props.userData;
+    arr = userData.bets.filter(element => {
+      return element.id !== bet.id
+    });
+    userData.bets = arr;
+    this.setState({userData})
+    console.log(arr)
   }
-
-  checkToken = (token) => {
-    if(token.expires > Date.now()) {
-      return true;
-    } else {
-      return false
-    }
-  };
+  
   
   render () {
     const {userData, token} = this.props
@@ -58,7 +52,7 @@ class Info extends Component {
         {userData.accessLevel === 1 && <div>
           <button className="admin_button">Admin Panel</button>
         </div>}
-        {userData.name && this.checkToken(token) ?
+        {userData.name && test.checkToken(token) ?
           
           <ol>
           {userData.name} <br/>
@@ -66,7 +60,13 @@ class Info extends Component {
           Your bets:
           
             {userData.bets.map(element => 
-              <li key={element.id}><div className="match">{element.match[0].team_a} : {element.match[0].team_b}</div></li>
+              <li key={element.id} className="match">
+                <div className="match_details">
+                  <div ><p>{element.match[0].team_a} : {element.match[0].team_b}</p></div>
+                  <div className="icons"><img className="icon" src={minus} onClick={(e) => this.deleteBet(e, element)}></img></div>
+
+                </div>
+              </li>
             )}
           </ol> :
           <div>You must login first</div>

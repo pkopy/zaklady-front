@@ -25,5 +25,14 @@ lib.changeElementSize = (elem, size) => {
   });
 };
 
+lib.checkToken = (token) => {
+
+  if(token && token.expires > Date.now()) {
+    return true;
+  } else {
+    return false
+  }
+};
+
 //Export module
 module.exports = lib
