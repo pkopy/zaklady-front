@@ -23,7 +23,7 @@ class Login extends Component {
       .then(data => {
         console.log(data.id)
         if(data.id) {
-          this.props.setToken(data);
+          this.props.setUser(data);
           this.props.test()
         }
         

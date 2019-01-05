@@ -34,5 +34,9 @@ lib.checkToken = (token) => {
   }
 };
 
+lib.showDate = (milis) => {
+  const date =  new Date(milis);
+  return `${date.getDate()}-${date.getMonth()}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` 
+}
 //Export module
 module.exports = lib

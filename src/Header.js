@@ -1,14 +1,37 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import logo from './logo.svg';
+const test = require('./helpers')
 
 class Header extends Component {
   changeClass = () => {
     document.querySelector('.nav').classList.toggle('open')
-  }
+  };
+
+  logout = (e) => {
+    e.preventDefault();
+    const email = this.props.token.email;
+    const token = this.props.token.id;
+
+    fetch(`${test.ip}/logout`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        email,
+        token
+      },
+    })
+    .then(() => {
+      this.props.setUserData({});
+      this.props.setToken({})
+    })
+    
+    .catch(err => console.log(err))
+  };
+
   render () {
 
-    const {login, idMatch} = this.props
+    const {token, idMatch} = this.props
     return (
       
       <header className="Header">
@@ -24,7 +47,7 @@ class Header extends Component {
               <li className="nav_item"><Link to="/" className="nav_link">Home</Link></li>
               <li className="nav_item"><Link to="/info" className="nav_link">Info</Link></li>
               <li className="nav_item"><Link to="/x" className="nav_link">Contact</Link></li>
-              <li className="nav_item">{login?(<Link to="/logout" className="nav_link">Logout</Link>):(<Link to="/login" className="nav_link">Login</Link>)}</li>
+              <li className="nav_item">{token.id?(<Link to="/" className="nav_link" onClick={this.logout}>Logout</Link>):(<Link to="/login" className="nav_link">Login</Link>)}</li>
             </ul>
           </div>
         

@@ -54,7 +54,7 @@ class App extends Component {
 
   
 
-  setToken = (token) => {
+  setUser = (token) => {
     console.log(`token: ${token.email}, ${token.id}`)
     this.setState({token});
     const tokenInfo = this.state.token
@@ -79,6 +79,9 @@ class App extends Component {
 
   setUserData = (userData) => {
     this.setState({userData})
+  };
+  setToken = (token) => {
+    this.setState({token})
   };
 
   showDetails = (e, match) => {
@@ -155,7 +158,7 @@ class App extends Component {
         body: JSON.stringify(body) 
       })
       .then(() => {
-        this.setToken(tokenInfo)
+        this.setUser(tokenInfo)
       })
       
       .catch(err => console.log(err))
@@ -178,13 +181,16 @@ class App extends Component {
   
   render() {
     // console.log(test.test)
-    const {competitions, token, match, idMatch} = this.state
+    const {competitions, token, match, idMatch, userData} = this.state
     return (
       <div>
         <Loader />
         <Header
-        login={this.state.token.id}
+        token={this.state.token}
         idMatch={idMatch}
+        setUserData={this.setUserData}
+        setToken={this.setToken}
+        // test={() => history.push('/')}
         />
         <Details 
         match={match}
@@ -200,11 +206,19 @@ class App extends Component {
         
         <Route path="/login" render={({history}) => (
           <Login 
-          setToken={this.setToken}
+          setUser={this.setUser}
           token={token}
           test={() => history.push('/info')}
           />
           )}/>
+
+        {/* <Route path="/logout" render={({history}) => (
+          <Logout
+          userData={userData}
+          token={token}
+          test={() => history.push('/')}
+          />
+          )}/> */}
 
         <Route path="/info" render={() => (
           <Info 
