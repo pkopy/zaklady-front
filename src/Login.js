@@ -10,7 +10,7 @@ class Login extends Component {
     e.preventDefault();
     const values = serializeForm(e.target, {hash: true});
     const email = /[\w+0-9._%+-]+@[\w+0-9.-]+\.[\w+]{2,3}/.test(values.email.trim())
-    console.log(values)
+    
     if(this.state.passLengt && email) {
       fetch(`${test.ip}/login`,{
         method: 'POST',
@@ -21,7 +21,7 @@ class Login extends Component {
       })
       .then(data => data.json())
       .then(data => {
-        console.log(data.id)
+        
         if(data.id) {
           this.props.setUser(data);
           this.props.test()

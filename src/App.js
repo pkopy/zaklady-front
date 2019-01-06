@@ -55,7 +55,7 @@ class App extends Component {
   
 
   setUser = (token) => {
-    console.log(`token: ${token.email}, ${token.id}`)
+    
     this.setState({token});
     const tokenInfo = this.state.token
     fetch(`${test.ip}/user`,{
@@ -68,12 +68,12 @@ class App extends Component {
     })
     .then(data => data.json())
     .then(userData => {
-      console.log(userData)
+
       
       this.setState({userData}); 
       
     })
-    .catch(data => console.log(data))
+    .catch(err => console.log(err))
   
   };
 
@@ -115,7 +115,7 @@ class App extends Component {
   
 
   showBet = (e, match) => {
-    console.log(match)
+    
     e.stopPropagation();
     const containerBet = document.querySelector('.container_bet');
     const bet = document.querySelector('.bet');
@@ -138,15 +138,14 @@ class App extends Component {
   addBet = (e, match) => {
     e.stopPropagation();
     const tokenInfo = this.state.token;
-    console.log(tokenInfo)
+    
     const user = this.state.userData;
     const body = {
       'email' : tokenInfo.email,
       'idMatch' : match.id,
       'bet' : 1
     }
-    console.log(user.name)
-    console.log('token ', test.checkToken(tokenInfo))
+    
     if(user.name && test.checkToken(tokenInfo)) {
       
       fetch(`${test.ip}/bet`, {
