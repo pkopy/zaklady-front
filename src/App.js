@@ -237,7 +237,7 @@ class App extends Component {
           />
           )}/>
 
-        {/* <Footer/> */}
+        <Footer/>
         {/* <Footer/> */}
         {/* <footer></footer> */}
       </div>
