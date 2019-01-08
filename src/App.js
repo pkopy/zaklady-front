@@ -22,12 +22,12 @@ const body = document.querySelectorAll('body')[0];
 
 class App extends Component {
   state = {
-    competition : {},
-    competitions : [],
-    token : {},
-    userData : {},
-    match : {},
-    idMatch : 0
+    competition: {},
+    competitions: [],
+    token: {},
+    userData: {},
+    match: {},
+    idMatch: 0
   };
   
   componentDidMount() {
@@ -62,8 +62,8 @@ class App extends Component {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'email' : tokenInfo.email,
-        'token' : tokenInfo.id
+        'email': tokenInfo.email,
+        'token': tokenInfo.id
       },
     })
     .then(data => data.json())
@@ -141,18 +141,18 @@ class App extends Component {
     
     const user = this.state.userData;
     const body = {
-      'email' : tokenInfo.email,
-      'idMatch' : match.id,
-      'bet' : 1
+      'email': tokenInfo.email,
+      'idMatch': match.id,
+      'bet': 1
     }
     
     if(user.name && test.checkToken(tokenInfo)) {
       
       fetch(`${test.ip}/bet`, {
-        method : 'POST',
-        headers : {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          'token' : tokenInfo.id
+          'token': tokenInfo.id
         },
         body: JSON.stringify(body) 
       })

@@ -6,7 +6,7 @@ import './Details.css'
 
 class Matches extends Component {
   state = {
-    idMatch : 0,
+    idMatch: 0,
     
   }
 

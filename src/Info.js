@@ -44,9 +44,9 @@ class Info extends Component {
       method : 'DELETE',
       headers : {
         'Content-Type': 'application/json',
-        'token' : tokenInfo.id,
-        'email' : tokenInfo.email,
-        'idbet' : bet.id
+        'token': tokenInfo.id,
+        'email': tokenInfo.email,
+        'idbet': bet.id
       },
     })
     .then(() => {

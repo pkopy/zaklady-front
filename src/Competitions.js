@@ -26,8 +26,8 @@ class Competitions extends Component {
       .then(data => data.json())
       .then(data => {
         this.setState({matches : data.matches});
-        this.setState({idComp : id});
-        this.setState({idMatch : 0});
+        this.setState({idComp: id});
+        this.setState({idMatch: 0});
         loader.style.display = 'none';
         body.style.overflowY = 'auto';
         // console.log(this.state.competition.matches)
@@ -35,16 +35,16 @@ class Competitions extends Component {
       .catch(data => {
         // console.log(data)
         // this.setState({idComp : data.id_comp})
-        this.setState({idComp : id});
-        this.setState({matches : data.matches});
-        this.setState({idMatch : 0});
+        this.setState({idComp: id});
+        this.setState({matches: data.matches});
+        this.setState({idMatch: 0});
         loader.style.display = 'none';
         body.style.overflowY = 'auto';
       });
     } else {
-      this.setState({matches : []});
-      this.setState({idComp : 0});
-      this.setState({idMatch : 0});
+      this.setState({matches: []});
+      this.setState({idComp: 0});
+      this.setState({idMatch: 0});
       loader.style.display = 'none';
       body.style.overflowY = 'auto';
     }
