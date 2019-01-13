@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import logo from './logo.svg';
-const test = require('./helpers')
+const helpers = require('./helpers')
 
 class Header extends Component {
   changeClass = () => {
@@ -13,7 +13,7 @@ class Header extends Component {
     const email = this.props.token.email;
     const token = this.props.token.id;
 
-    fetch(`${test.ip}/logout`,{
+    fetch(`${helpers.ip}/logout`,{
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

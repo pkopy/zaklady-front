@@ -17,7 +17,7 @@ import './Details.css'
 import './Bet.css'
 
 
-const test = require('./helpers')
+const helpers = require('./helpers')
 const body = document.querySelectorAll('body')[0];
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
   
   componentDidMount() {
     const loader = document.querySelector('.container_loader')
-    fetch(`${test.ip}/competition`)
+    fetch(`${helpers.ip}/competition`)
     .then(data => data.json())
     .then(data => {
       this.setState({competitions : data});
@@ -58,7 +58,7 @@ class App extends Component {
     
     this.setState({token});
     const tokenInfo = this.state.token
-    fetch(`${test.ip}/user`,{
+    fetch(`${helpers.ip}/user`,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ class App extends Component {
     this.setState({match})
     this.setState({idMatch : match.id})
     containerDetails.style.display = 'block';
-    test.changeElementSize(details, 600)
+    helpers.changeElementSize(details, 600)
     .then(() => {
       body.style.overflowY = 'hidden';
       body.style.scrollBehavior = '';
@@ -124,7 +124,7 @@ class App extends Component {
     this.setState({idMatch : match.id})
     containerBet.style.display = 'block';
     
-    test.changeElementSize(bet, 400)
+    helpers.changeElementSize(bet, 400)
     .then(() => {
       body.style.overflowY = 'hidden';
       // document.body.scrollTop = 0;
@@ -146,9 +146,9 @@ class App extends Component {
       'bet': 1
     }
     
-    if(user.name && test.checkToken(tokenInfo)) {
+    if(user.name && helpers.checkToken(tokenInfo)) {
       
-      fetch(`${test.ip}/bet`, {
+      fetch(`${helpers.ip}/bet`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ class App extends Component {
   };
   
   render() {
-    // console.log(test.test)
+    
     const {competitions, token, match, idMatch, userData} = this.state
     return (
       <div>
@@ -189,7 +189,7 @@ class App extends Component {
         idMatch={idMatch}
         setUserData={this.setUserData}
         setToken={this.setToken}
-        // test={() => history.push('/')}
+        // helpers={() => history.push('/')}
         />
         <Details 
         match={match}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
-const test = require('./helpers')
+const helpers = require('./helpers')
 
 class Login extends Component {
   state = {
@@ -12,7 +12,7 @@ class Login extends Component {
     const email = /[\w+0-9._%+-]+@[\w+0-9.-]+\.[\w+]{2,3}/.test(values.email.trim())
     
     if(this.state.passLengt && email) {
-      fetch(`${test.ip}/login`,{
+      fetch(`${helpers.ip}/login`,{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

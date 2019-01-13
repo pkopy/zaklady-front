@@ -4,7 +4,7 @@ import './Matches.css';
 import Loader from './Loader';
 import './Loader.css';
 import add from './add.svg'
-const test = require('./helpers')
+const helpers = require('./helpers')
 const body = document.querySelectorAll('body')[0];
 
 class Competitions extends Component {
@@ -22,7 +22,7 @@ class Competitions extends Component {
     loader.style.display = '';
     body.style.overflowY = 'hidden';
     if (id !== this.state.idComp) {
-      fetch(`${test.ip}/test/${id}`)
+      fetch(`${helpers.ip}/test/${id}`)
       .then(data => data.json())
       .then(data => {
         this.setState({matches : data.matches});
@@ -66,7 +66,7 @@ class Competitions extends Component {
             {competitions.map(competition => 
               <li key={competition.id} className="competition" onClick={() => this.showCompetition(competition.id)}>
                 <div>{competition.name}</div>
-                <div><img src={`${test.ip}/img/${competition.img}`} alt={competition.name}/></div>
+                <div><img src={`${helpers.ip}/img/${competition.img}`} alt={competition.name}/></div>
               </li>
             )}
           </ol>
