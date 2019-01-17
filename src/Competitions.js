@@ -20,7 +20,7 @@ class Competitions extends Component {
     const backgroundloader = document.querySelector('.background_loader');
     backgroundloader.style.height = window.innerHeight + window.pageYOffset +'px'
     loader.style.display = '';
-    body.style.overflowY = 'hidden';
+    // body.style.overflowY = 'hidden';
     if (id !== this.state.idComp) {
       fetch(`${test.ip}/test/${id}`)
       .then(data => data.json())
@@ -29,7 +29,7 @@ class Competitions extends Component {
         this.setState({idComp: id});
         this.setState({idMatch: 0});
         loader.style.display = 'none';
-        body.style.overflowY = 'auto';
+        // body.style.overflowY = 'auto';
         // console.log(this.state.competition.matches)
       })
       .catch(data => {
@@ -46,7 +46,7 @@ class Competitions extends Component {
       this.setState({idComp: 0});
       this.setState({idMatch: 0});
       loader.style.display = 'none';
-      body.style.overflowY = 'auto';
+      // body.style.overflowY = 'auto';
     }
 
     // document.querySelector('.match').classList.toggle('open')

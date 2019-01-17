@@ -94,8 +94,8 @@ class App extends Component {
     containerDetails.style.display = 'block';
     test.changeElementSize(details, 600)
     .then(() => {
-      body.style.overflowY = 'hidden';
-      body.style.scrollBehavior = '';
+      // body.style.overflowY = 'hidden';
+      // body.style.scrollBehavior = '';
       const detailsContent = document.querySelector('.details_content');
       detailsContent.style.display = 'block'
     })
@@ -106,7 +106,7 @@ class App extends Component {
     const containerDetails = document.querySelector('.container_details');
     const detailsContent = document.querySelector('.details_content');
     detailsContent.style.display = 'none';
-    body.style.overflowY = 'auto';
+    // body.style.overflowY = 'auto';
     details.style = '';
     containerDetails.style.display = 'none';
     this.setState({idMatch : 0});
@@ -126,7 +126,7 @@ class App extends Component {
     
     test.changeElementSize(bet, 400)
     .then(() => {
-      body.style.overflowY = 'hidden';
+      // body.style.overflowY = 'hidden';
       // document.body.scrollTop = 0;
       // document.documentElement.scrollTop = 0;
       body.style.scrollBehavior = '';
@@ -172,7 +172,7 @@ class App extends Component {
     const containerBet = document.querySelector('.container_bet');
     const betContent = document.querySelector('.bet_content');
     betContent.style.display = 'none';
-    body.style.overflowY = 'auto';
+    // body.style.overflowY = 'auto';
     bet.style = '';
     containerBet.style.display = 'none';
     this.setState({idMatch : 0});
