@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Matches.css'
 import './Info.css'
 import minus from './minus.svg'
-const test = require('./helpers')
+const helpers = require('./helpers')
 
 class Info extends Component {
   // state = {
@@ -14,7 +14,7 @@ class Info extends Component {
   //   const token = this.props.token
   //   console.log(this.state.userData.name)
   //   if(!this.state.userData.name) {
-  //     fetch(`${test.ip}/user`,{
+  //     fetch(`${helpers.ip}/user`,{
   //       method: 'GET',
   //       headers: {
   //         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ class Info extends Component {
     arr = userData.bets.filter(element => {
       return element.id !== bet.id
     });
-    fetch(`${test.ip}/bet`, {
+    fetch(`${helpers.ip}/bet`, {
       method : 'DELETE',
       headers : {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ class Info extends Component {
         {userData.accessLevel === 1 && <div>
           <button className="admin_button">Admin Panel</button>
         </div>}
-        {userData.name && test.checkToken(token) ?
+        {userData.name && helpers.checkToken(token) ?
           
           <ol>
           {userData.name} <br/>
@@ -75,7 +75,7 @@ class Info extends Component {
             {userData.bets.map(element => 
               <li key={element.id} className="match">
                 <div className="match_details">
-                  <div ><p>{element.details[0].team_a} : {element.details[0].team_b} - {test.showDate(element.date)}</p></div>
+                  <div ><p>{element.details[0].team_a} : {element.details[0].team_b} - {helpers.showDate(element.date)}</p></div>
                   <div className="icons"><img className="icon" src={minus} onClick={(e) => this.deleteBet(e, element)}></img></div>
 
                 </div>
