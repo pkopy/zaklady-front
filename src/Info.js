@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Matches.css'
 import './Info.css'
 import minus from './img/minus.svg'
@@ -63,7 +64,7 @@ class Info extends Component {
     return (
       <div>
         {userData.accessLevel === 1 && <div>
-          <button className="admin_button">Admin Panel</button>
+          <Link to="/admin"className="admin_button">Admin Panel</Link>
         </div>}
         {userData.name && helpers.checkToken(token) ?
           

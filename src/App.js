@@ -226,6 +226,11 @@ class App extends Component {
           token={this.state.token}
           />
           )}/>
+        
+        <Route path="/admin" render={() => (
+          <Login
+          />
+        )}/>
 
 
         <Route exact path="/" render={() => (
