@@ -49,7 +49,7 @@ class Login extends Component {
           <p>Email:</p>
           <input type="text" name="email"/><br/>
           <p>Password:</p>
-          <input type="password" name="password" onKeyUp={this.checkPass}/><br/>
+          <input type="password" name="password" onChange={this.checkPass}/><br/>
           {/* {this.state.passLengt && <p className="pass-info">Password is too short </p>} */}
           <button disabled={!this.state.passLengt} className={!this.state.passLengt ? "login-button-disabled":"login-button"}>Login</button>
         </form>
