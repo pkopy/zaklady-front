@@ -3,7 +3,7 @@ import Matches from './Matches';
 import './Matches.css';
 import Loader from './Loader';
 import './Loader.css';
-import add from './add.svg'
+import add from './img/add.svg'
 const helpers = require('./helpers')
 const body = document.querySelectorAll('body')[0];
 

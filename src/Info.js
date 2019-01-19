@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Matches.css'
 import './Info.css'
-import minus from './minus.svg'
+import minus from './img/minus.svg'
 const helpers = require('./helpers')
 
 class Info extends Component {

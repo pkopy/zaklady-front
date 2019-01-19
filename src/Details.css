@@ -59,7 +59,7 @@
   margin-top: 2em;
   border-radius: 30px;
   transition-duration: 0.4s;
-  background-image: url('./xmark.svg');
+  background-image: url('img/xmark.svg');
   outline: none;
 }
 .close_button:hover {
