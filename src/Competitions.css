@@ -6,8 +6,10 @@
 }
 
 .competitions ol {
-  display: inline-flex;
-  padding: 0
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .competition {

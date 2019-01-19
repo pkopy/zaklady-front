@@ -5,6 +5,7 @@
   border: 1px solid #c4c4c4;;
   border-radius: 10px;
   text-align: left;
+  transition-duration: 0.4s;
 }
 
 /* .match:nth-child(odd) {

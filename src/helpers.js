@@ -11,7 +11,7 @@ lib.changeElementSize = (elem, size) => {
       elementHeight += 2;
       elem.style.display = 'block';
       elem.style.left = window.innerWidth/2 - count/2 + 'px';
-      elem.style.top = window.innerHeight/2 - count/2 + window.pageYOffset +'px';
+      elem.style.top = window.innerHeight/2 - count/2 +'px';
       elem.style.height = count + elementHeight + 'px'
       elem.style.width = count + 'px'
       elem.style.opacity = size/(2 * size - count)
