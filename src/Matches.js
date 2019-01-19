@@ -33,7 +33,6 @@ class Matches extends Component {
             </li>
           )}
         </ol>
-        
       </div>
     )
   };
