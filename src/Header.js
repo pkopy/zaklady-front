@@ -26,7 +26,11 @@ class Header extends Component {
       this.props.setToken({})
     })
     
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err);
+      this.props.setUserData({});
+      this.props.setToken({})
+    })
   };
 
   render () {

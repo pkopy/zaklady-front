@@ -50,11 +50,19 @@ class Info extends Component {
         'idbet': bet.id
       },
     })
-    .then(() => {
+    .then((data) => {
+      console.log(data)
+      if(data.status === 403) {
+        console.log('horopcia')
+      }
       userData.bets = arr;
       this.setState({userData})
       console.log(arr)
 
+    })
+    .catch((err) => {
+      console.log('bettttttt')
+      this.setState({})
     })
   }
   
@@ -63,7 +71,7 @@ class Info extends Component {
     const {userData, token} = this.props
     return (
       <div>
-        {userData.accessLevel === 1 && <div>
+        {userData.accessLevel === 1 && helpers.checkToken(token) && <div>
           <Link to="/admin"className="admin_button">Admin Panel</Link>
         </div>}
         {userData.name && helpers.checkToken(token) ?

@@ -25,6 +25,7 @@ lib.changeElementSize = (elem, size) => {
   });
 };
 
+//TODO check is token exist in server
 lib.checkToken = (token) => {
 
   if(token && token.expires > Date.now()) {
