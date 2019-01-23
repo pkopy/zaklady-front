@@ -156,13 +156,27 @@ class App extends Component {
         },
         body: JSON.stringify(body) 
       })
-      .then(() => {
-        this.setUser(tokenInfo)
+      .then((res) => {
+        
+        
+        if(res.status !== 200) {
+          
+          return res.json()
+        } else {
+
+          this.setUser(tokenInfo)
+          return res.json()
+        }
+      }
+
+      ).then(data => {
+        console.log(data)
+        alert(data.Error)
       })
       
-      .catch(err => console.log(err))
+      .catch(err => alert(err))
     } else {
-      console.log('xxxxx')
+      alert("Zaloguj się")
     }
     
   };
