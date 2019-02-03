@@ -68,13 +68,51 @@ class App extends Component {
     })
     .then(data => data.json())
     .then(userData => {
-
+      //Get all user's bets
+      fetch(`${helpers.ip}/bet`,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'email': tokenInfo.email,
+          'token': tokenInfo.id
+        },
+      })
+      .then(data => data.json())
+      .then(betsData => {
+        //Get all user`s matches
+        this.getAllMatches(betsData)
+        .then(data => {
+          console.log(data)
+          userData.bets = data;
+          this.setState({userData}); 
+        })
+      })
       
-      this.setState({userData}); 
       
     })
     .catch(err => console.log(err))
   
+  };
+
+  getAllMatches = (array) => {
+    const arr = [];
+    return new Promise((res, rej) => {
+      array.forEach(elem => {
+        fetch(`${helpers.ip}/match/${elem.id_match}`)
+        .then(data => data.json())
+        .then(matchData => {
+          elem.details = matchData;
+          arr.push(elem)
+          if(arr.length === array.length) {
+            console.log(arr)
+            res(arr)
+          } 
+        })
+        .catch(err => {
+          rej(err)
+        });
+      })
+    });
   };
 
   setUserData = (userData) => {
@@ -171,7 +209,12 @@ class App extends Component {
 
       ).then(data => {
         console.log(data)
-        alert(data.Error)
+        if(data.Error) {
+          alert(data.Error)
+
+        } else {
+          alert(data.Message)
+        }
       })
       
       .catch(err => alert(err))

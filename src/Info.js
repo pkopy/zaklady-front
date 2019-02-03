@@ -84,7 +84,7 @@ class Info extends Component {
             {userData.bets.map(element => 
               <li key={element.id} className="match">
                 <div className="match_details">
-                  <div ><p>{element.details[0].team_a} : {element.details[0].team_b} - {helpers.showDate(element.date)}</p></div>
+                  <div ><p>{element.details.team_a} : {element.details.team_b} - {helpers.showDate(element.date)}</p></div>
                   <div className="icons"><img className="icon" src={minus} onClick={(e) => this.deleteBet(e, element)}></img></div>
 
                 </div>

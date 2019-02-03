@@ -1,5 +1,6 @@
 const lib = {};
 lib.ip = 'http://localhost:5101';
+// lib.ip = 'http://168.63.77.200:5101';
 // lib.ip = 'http://46.41.150.120:5101';
 
 lib.changeElementSize = (elem, size) => {
@@ -39,5 +40,7 @@ lib.showDate = (milis) => {
   const date =  new Date(milis);
   return date.toLocaleString() //`${date.getDate()}-${date.getMonth()}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` 
 }
+
+
 //Export module
 module.exports = lib
