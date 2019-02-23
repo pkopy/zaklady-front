@@ -79,13 +79,19 @@ class App extends Component {
       })
       .then(data => data.json())
       .then(betsData => {
+       
         //Get all user`s matches
         this.getAllMatches(betsData)
         .then(data => {
-          console.log(data)
+          
           userData.bets = data;
           this.setState({userData}); 
         })
+        
+      })
+      .then(() => {
+        userData.bets = [];
+        this.setState({userData}); 
       })
       
       
@@ -208,7 +214,6 @@ class App extends Component {
       }
 
       ).then(data => {
-        console.log(data)
         if(data.Error) {
           alert(data.Error)
 
@@ -245,6 +250,7 @@ class App extends Component {
         token={this.state.token}
         idMatch={idMatch}
         setUserData={this.setUserData}
+        setUser={this.setUser}
         setToken={this.setToken}
         // helpers={() => history.push('/')}
         />

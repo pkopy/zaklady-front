@@ -23,6 +23,7 @@ class Login extends Component {
       .then(data => {
         
         if(data.id) {
+          // this.props.setUserData(data)
           this.props.setUser(data);
           this.props.test()
         }
