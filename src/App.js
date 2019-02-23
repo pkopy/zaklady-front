@@ -27,7 +27,8 @@ class App extends Component {
     token: {},
     userData: {},
     match: {},
-    idMatch: 0
+    idMatch: 0,
+    isUserLoaded: false
   };
   
   componentDidMount() {
@@ -52,7 +53,9 @@ class App extends Component {
     
   };
 
-  
+  getUser = () => {
+    return this.state.userData
+  }
 
   setUser = (token) => {
     
@@ -86,12 +89,14 @@ class App extends Component {
           
           userData.bets = data;
           this.setState({userData}); 
+          this.setState({isUserLoaded: true})
         })
         
       })
       .then(() => {
         userData.bets = [];
         this.setState({userData}); 
+        this.setState({isUserLoaded: true})
       })
       
       
@@ -110,7 +115,7 @@ class App extends Component {
           elem.details = matchData;
           arr.push(elem)
           if(arr.length === array.length) {
-            console.log(arr)
+            // console.log(arr)
             res(arr)
           } 
         })
@@ -271,6 +276,8 @@ class App extends Component {
           setUser={this.setUser}
           token={token}
           test={() => history.push('/info')}
+          isUserLoaded={this.state.isUserLoaded}
+          getUser={this.getUser}
           />
           )}/>
 
@@ -287,6 +294,7 @@ class App extends Component {
           userData={this.state.userData}
           setUserData={this.setUserData}
           token={this.state.token}
+          isUserLoaded={this.state.isUserLoaded}
           />
           )}/>
         

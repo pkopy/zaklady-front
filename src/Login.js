@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import serializeForm from 'form-serialize';
+import Loader from './Loader';
 const helpers = require('./helpers')
 
 class Login extends Component {
   state = {
     passLengt : false
+  };
+
+  componentDidMount() {
+    const loader = document.querySelector('.container_loader');
+    loader.style.display = 'none';
   }
+
   loginUser = (e) => {
     e.preventDefault();
     const values = serializeForm(e.target, {hash: true});
     const email = /[\w+0-9._%+-]+@[\w+0-9.-]+\.[\w+]{2,3}/.test(values.email.trim())
-    
+    const loader = document.querySelector('.container_loader');
     if(this.state.passLengt && email) {
+      loader.style.display = '';
       fetch(`${helpers.ip}/login`,{
         method: 'POST',
         headers: {
@@ -25,11 +33,20 @@ class Login extends Component {
         if(data.id) {
           // this.props.setUserData(data)
           this.props.setUser(data);
-          this.props.test()
+          let user = this.props.getUser();
+
+          let interval = setInterval(() => {
+            if(user.name) {
+              this.props.test();
+              loader.style.display = 'none';
+              clearInterval(interval);
+            } else {
+              user = this.props.getUser();
+            }
+          },500);
+          
         }
-        
       })
-      
       .catch(data => console.log(data))
 
     }
@@ -37,15 +54,16 @@ class Login extends Component {
 
   checkPass = (e) => {
     if (e.target.value.length > 5) {
-      this.setState({passLengt : true})
+      this.setState({passLengt : true});
     } else {
-      this.setState({passLengt : false})
+      this.setState({passLengt : false});
     }
   };
 
   render () {
     return (
       <div className="form">
+      {/* <Loader /> */}
         <form method="POST" onSubmit={this.loginUser}>
           <p>Email:</p>
           <input type="text" name="email"/><br/>

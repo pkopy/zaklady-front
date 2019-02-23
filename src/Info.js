@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Matches.css'
 import './Info.css'
+
 import minus from './img/minus.svg'
 const helpers = require('./helpers')
 
@@ -27,10 +28,10 @@ class Info extends Component {
   //   }
   // }
   componentDidMount() {
-    this.timer =  setInterval(() => console.log('tik-tak'), 1000);
+    // this.timer =  setInterval(() => console.log('tik-tak'), 1000);
   }
   componentWillUnmount() {
-    clearInterval(this.timer)
+    // clearInterval(this.timer)
   }
   
   deleteBet = (e, bet) => {
@@ -51,17 +52,17 @@ class Info extends Component {
       },
     })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       if(data.status === 403) {
-        console.log('horopcia')
+        // console.log('horopcia')
       }
       userData.bets = arr;
       this.setState({userData})
-      console.log(arr)
+      // console.log(arr)
 
     })
     .catch((err) => {
-      console.log('bettttttt')
+      // console.log('bettttttt')
       this.setState({})
     })
   }
@@ -71,6 +72,7 @@ class Info extends Component {
     const {userData, token} = this.props
     return (
       <div>
+        
         {userData.accessLevel === 1 && helpers.checkToken(token) && <div>
           <Link to="/admin"className="admin_button">Admin Panel</Link>
         </div>}
